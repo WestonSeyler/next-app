@@ -1,10 +1,16 @@
-import Image from 'next/image'
+import Link from "next/link"
+import { photos } from "./data"
 
-
-export default function Home() {
+export default function Page() {
   return (
-    <main className="min-h-screen">
-      <div>NEXT AP1111P</div>
-    </main>
+    <>
+      <main className="container">
+        {photos.map(({ id, src }) => (
+          <Link key={id} href={`/photos/${id}`}>
+            <img width="100" src={src} />
+          </Link>
+        ))}
+      </main>
+    </>
   )
 }
