@@ -1,16 +1,16 @@
-import Link from "next/link"
-import { photos } from "./data"
-
-export default function Page() {
-  return (
-    <>
-      <main className="container">
-        {photos.map(({ id, src }) => (
-          <Link key={id} href={`/photos/${id}`}>
-            <img width="100" src={src} />
-          </Link>
-        ))}
-      </main>
-    </>
-  )
+// app/page.js
+async function getData() {
+  const res = await fetch('https://dog-api.kinduff.com/api/facts')
+  if (!res.ok) {
+    // 这会触发最近的 `error.js` 错误边界
+    throw new Error('Failed to fetch data')
+  }
+ 
+  return res.json()
+}
+ 
+export default async function Page() {
+  const data = await getData()
+ 
+  return <main>{data.facts}</main>
 }
