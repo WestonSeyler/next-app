@@ -1,3 +1,9 @@
-export default function Page() {
-    return <h1>About</h1>
-  }
+import Header from "../components/header";
+export default function AboutPage() {
+    return (
+        <>
+            <Header></Header>
+            <h1>Hello World!</h1>
+        </>
+    );
+}
